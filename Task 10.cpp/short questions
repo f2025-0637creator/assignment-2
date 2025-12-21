@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    // 1. Initialize and print
+    vector<int> v = {10, 20, 30, 40, 50};
+    for (int x : v) cout << x << " ";
+
+    // 2. User input
+    int N;
+    cout << "\nEnter number of elements: ";
+    cin >> N;
+
+    v.clear();
+    for (int i = 0; i < N; i++) {
+        int num;
+        cin >> num;
+        v.push_back(num);
+    }
+
+    // 3. Find max and min
+    int max = v[0], min = v[0];
+    for (int x : v) {
+        if (x > max) max = x;
+        if (x < min) min = x;
+    }
+    cout << "Max = " << max << " Min = " << min << endl;
+
+    // 4. Reverse vector
+    int i = 0, j = v.size() - 1;
+    while (i < j) {
+        swap(v[i], v[j]);
+        i++; j--;
+    }
+
+    cout << "Reversed: ";
+    for (int x : v) cout << x << " ";
+
+    // 5. Count occurrences
+    int target, count = 0;
+    cout << "\nEnter number to count: ";
+    cin >> target;
+
+    for (int x : v)
+        if (x == target) count++;
+
+    cout << "Count = " << count;
+
+    return 0;
+}
