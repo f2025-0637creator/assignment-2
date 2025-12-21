@@ -1,0 +1,66 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+
+    // -------- 1. Remove Even Numbers --------
+    vector<int> v = {1, 2, 3, 4, 5, 6};
+
+    for (int i = 0; i < v.size(); i++) {
+        if (v[i] % 2 == 0) {
+            v.erase(v.begin() + i);
+            i--; // adjust index
+        }
+    }
+
+    cout << "After removing even numbers: ";
+    for (int x : v) cout << x << " ";
+    cout << endl;
+
+
+    // -------- 2. Find Missing Element --------
+    vector<int> a = {1, 2, 3, 4, 5};
+    vector<int> b = {1, 2, 4, 5};
+
+    int sum1 = 0, sum2 = 0;
+    for (int x : a) sum1 += x;
+    for (int x : b) sum2 += x;
+
+    cout << "Missing element: " << (sum1 - sum2) << endl;
+
+
+    // -------- 3. Check for Duplicates --------
+    vector<int> d = {1, 2, 3, 2, 5};
+    bool duplicate = false;
+
+    for (int i = 0; i < d.size(); i++) {
+        for (int j = i + 1; j < d.size(); j++) {
+            if (d[i] == d[j]) {
+                duplicate = true;
+                break;
+            }
+        }
+    }
+
+    if (duplicate)
+        cout << "Duplicates found\n";
+    else
+        cout << "No duplicates\n";
+
+
+    // -------- 4. Sum of Pairs --------
+    vector<int> p = {1, 5, 7, -1, 5};
+    int target = 6, count = 0;
+
+    for (int i = 0; i < p.size(); i++) {
+        for (int j = i + 1; j < p.size(); j++) {
+            if (p[i] + p[j] == target)
+                count++;
+        }
+    }
+
+    cout << "Number of pairs with sum " << target << ": " << count << endl;
+
+    return 0;
+}
